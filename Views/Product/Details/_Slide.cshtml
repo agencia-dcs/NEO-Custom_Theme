@@ -15,7 +15,14 @@
 }
 
 <div class="ui grid">
-    <div class="row">
+
+    <div class="four wide computer column">
+        <div class="column">
+            @Html.Partial("~/Views/Product/Details/_Gallery.cshtml", Model)
+        </div>
+    </div>
+
+    <div class="ten wide computer column center aligned">
         <div class="column center aligned">
             <div class="ui image">
                 @if (!string.IsNullOrEmpty(tag.Name))
@@ -39,9 +46,5 @@
     </div>
 
 
-    <div class="row one column">
-        <div class="column">
-            @Html.Partial("~/Views/Product/Details/_Gallery.cshtml", Model)
-        </div>
-    </div>
+
 </div>

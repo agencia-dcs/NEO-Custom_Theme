@@ -14,20 +14,20 @@
     .title {
       font-weight: bold;
       font-size: 14px;
-      color: $primary-color;
+      color: #fff;
+      background-color: $primary-color;
       text-transform: uppercase;
       padding-left: 15px;
-      box-shadow: inset 3px 0 0 #EEEEEE;
       margin-bottom: 10px;
+      border-radius: 0.5em;
       &.active {
-        border-top: 3px solid #EEEEEE;
-        border-bottom: 3px solid #EEEEEE;
-        box-shadow:none;
+      box-shadow:none;
       }
       .icon {
         float: right;
         margin-top: 3px;
       }
+      
       
       >span {
         word-break: break-word;

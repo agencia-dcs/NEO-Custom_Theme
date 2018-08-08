@@ -162,6 +162,37 @@
     <div class="ui grid stackable produto">
     <div class="row product information one column">
 
+
+
+
+
+        <!-- START CUSTOM NAME-->
+
+
+                      <div class="sixteen wide mobile sixteen wide computer column">
+                            <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
+                            @if (@Model.Brand != null)
+                            {
+                                <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
+                            }
+                            else
+                            {
+                                <h5 itemprop="productBrand" class="marcaProduto"></h5>
+                            }
+                        </div>
+
+
+
+
+
+
+        <!-- END CUSTOM NAME-->
+
+
+
+
+
+
         <!-- COMEÇO MARCA MOBILE-->
         <div class="mobile only column">
             <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
@@ -204,8 +235,10 @@
     
 
         <div class="row detalhes produto">
+
+
             <!-- FIM IMAGENS DO PRODUTO PRINCIPAL-->
-            <div class="sixteen wide mobile nine wide computer column" id="exibePartial">
+            <div class="sixteen wide mobile ten wide computer column" id="exibePartial">
                 @{
                     List<DomainProduct.Entities.ProductImage> productFirstReferenceImages = new List<DomainProduct.Entities.ProductImage>();
                     List<DomainProduct.Entities.ProductImage> productImages = new List<DomainProduct.Entities.ProductImage>();
@@ -261,23 +294,15 @@
             <!-- COMEÇO IMAGENS DO PRODUTO PRINCIPAL-->
             <div class="ui divider hidden"></div>
             <!-- COMEÇO INFORMAÇÕES DO PRODUTO-->
-            <div class="sixteen wide mobile seven wide computer column infoProduto">
+            <div class="sixteen wide mobile six wide computer column infoProduto">
                 <div class="ui grid">
                     <div class="mobile-hide row product information">
                         <div class="column">
-                            <h1 itemprop="name" class="nomeProduto" id="produto-nome">@Model.Name</h1>
-                            @if (@Model.Brand != null)
-                            {
-                                <h5 itemprop="productBrand" class="marcaProduto">@Model.Brand.Name</h5>
-                            }
-                            else
-                            {
-                                <h5 itemprop="productBrand" class="marcaProduto"></h5>
-                            }
+ 
                             <div class="ui two column grid stackable">
-                                <div class="column">
+                               <!-- <div class="column">
                                     <h6 itemprop="productID" class="codProduto">@Model.Code</h6>
-                                </div>
+                                </div> -->
                                 <div class="column">
                                     <div class="avaliacoes">
                                     <div class="ui tiny star rating" data-rating="@Model.Rate.Value.ToString().Replace(",", ".")"></div>
@@ -301,40 +326,22 @@
                             </div>
                         </div>
                     </div>
-                    <!--COMEÇO DICA DE COMPRA-->
-                    <div id="dica_compra_partial">
-                        @Html.Action("BuyingTips", "Product", new { productID = @Model.IdProduct, skuID = SKUPadrao != null ? SKUPadrao.IdSku : 0 })
-                    </div>
-                    <!--FIM DICA DE COMPRA-->
-                    <div class="row product-grid">
+
+                    <div class="product-grid">
                         <div class="column blocoInfo">
                         <div class="ui middle aligned margin bottom medium blocoValores">
-                            <!--COMEÇO VARIAÇÔES-->
-                                
-                            @if (!Model.FlagExhausted)
-                            {
-                                @Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao, ListaSku = Model.SKUs })
-                            }
-                                
-                            <!--FIM VARIAÇÔES-->
-                            <div class="column ui attached segment">
-                                <div class="ui grid">
-                                    <div class="row stackable two column">
-                                        <div class="column middle aligned padding-top no blocoQtd">
-                                            <div class="ui qtd action mini input">
-                                                <button class="ui icon button qtdminus" id="qtdminus-detalhes">
-                                                    <i class="minus icon"></i>
-                                                </button>
-                                                <input type="number" min="1" step="1" size="3" value="1"
-                                                       name="quantidade" id="quantidade" class="text center"/>
-                                                <button class="ui grey icon button qtdplus" id="qtdplus-detalhes">
-                                                    <i class="add icon"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                            
+
+
+
+
+
+
+
+
                                         <!--COMEÇO GRADE-->
-                                        <div class="column padding-bottom no text right blocoPreco" itemprop="offers" id="block-price" itemscope="" itemtype="http://schema.org/Offer">
+
+                                        
+                                        <div class="ui attached segment column padding-bottom no text left blocoPreco" itemprop="offers" id="block-price" itemscope="" itemtype="http://schema.org/Offer">
                                             <div id="variacao-preco">
                                                 @if (Model.HaveSku)
                                                 {
@@ -429,8 +436,69 @@
                                             {
                                                 <p class="text color grey regular parcelamento small">@Model.DescriptionAvailabilityStatus</p>
                                             }
+
+
+
+
+
+                    <!--COMEÇO DICA DE COMPRA-->
+                    <div id="dica_compra_partial">
+                        @Html.Action("BuyingTips", "Product", new { productID = @Model.IdProduct, skuID = SKUPadrao != null ? SKUPadrao.IdSku : 0 })
+                    </div>
+                    <!--FIM DICA DE COMPRA-->
+
+
+
+
+
+                                            
                                         </div>
+
+
+
+
+
+
+
                                         <!--FIM GRADE-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!--COMEÇO VARIAÇÔES-->
+                                
+                            @if (!Model.FlagExhausted)
+                            {
+                                @Html.Action("Variations", "Product", new { reference = @Model.AvailableReferences, skuPadrao = @SKUPadrao, ListaSku = Model.SKUs })
+                            }
+                                
+                            <!--FIM VARIAÇÔES-->
+                            <div class="column ui attached segment">
+                                <div class="ui grid">
+                                    <div class="row stackable two column">
+                                        <div class="column middle aligned padding-top no blocoQtd">
+                                            <div class="ui qtd action mini input">
+                                                <button class="ui icon button qtdminus" id="qtdminus-detalhes">
+                                                    <i class="minus icon"></i>
+                                                </button>
+                                                <input type="number" min="1" step="1" size="3" value="1"
+                                                       name="quantidade" id="quantidade" class="text center"/>
+                                                <button class="ui grey icon button qtdplus" id="qtdplus-detalhes">
+                                                    <i class="add icon"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                            
+
                                             
                                         
                                         <div class="ten wide computer sixteen wide tablet sixteen wide mobile column btnComprar">
